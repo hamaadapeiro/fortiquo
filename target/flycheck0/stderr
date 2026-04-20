@@ -1,0 +1,8 @@
+error: failed to load manifest for workspace member `/Users/hamaadabdulwaris/Documents/rustProjects/fortiquo/crates/types`
+referenced by workspace at `/Users/hamaadabdulwaris/Documents/rustProjects/fortiquo/Cargo.toml`
+
+Caused by:
+  failed to read `/Users/hamaadabdulwaris/Documents/rustProjects/fortiquo/crates/types/Cargo.toml`
+
+Caused by:
+  No such file or directory (os error 2)
