@@ -3,17 +3,19 @@ resolver = "2"
 
 members = [
     "crates/types",
-    "crates/crypto",
-    "crates/consensus",
-    "crates/state",
-    "crates/evm",
-    "crates/mempool",
-    "crates/executor",
-    "crates/p2p",
-    "crates/rpc",
-    "crates/wallet-sdk",
-    "crates/node",
 ]
+
+# Future crates to be added in subsequent phases
+# "crates/crypto",
+# "crates/consensus",
+# "crates/state",
+# "crates/evm",
+# "crates/mempool",
+# "crates/executor",
+# "crates/p2p",
+# "crates/rpc",
+# "crates/wallet-sdk",
+# "crates/node",
 
 [workspace.package]
 version = "0.1.0"
