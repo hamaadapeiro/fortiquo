@@ -3,10 +3,10 @@ resolver = "2"
 
 members = [
     "crates/types",
+    "crates/crypto",
 ]
 
 # Future crates to be added in subsequent phases
-# "crates/crypto",
 # "crates/consensus",
 # "crates/state",
 # "crates/evm",

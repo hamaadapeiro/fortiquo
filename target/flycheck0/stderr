@@ -1,10 +1,8 @@
     Updating crates.io index
 warning: failed to write cache, path: /Users/hamaadabdulwaris/.cargo/registry/index/index.crates.io-1949cf8c6b5b557f/.cache/bl/ak/blake3, error: Permission denied (os error 13)
-     Locking 104 packages to latest compatible versions
-      Adding thiserror v1.0.69 (available: v2.0.18)
  Downloading crates ...
-  Downloaded cc v1.2.60
-error: failed to open `/Users/hamaadabdulwaris/.cargo/registry/cache/index.crates.io-1949cf8c6b5b557f/cc-1.2.60.crate`
+  Downloaded hex v0.4.3
+error: failed to open `/Users/hamaadabdulwaris/.cargo/registry/cache/index.crates.io-1949cf8c6b5b557f/hex-0.4.3.crate`
 
 Caused by:
   Permission denied (os error 13)
