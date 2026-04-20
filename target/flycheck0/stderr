@@ -1,8 +1,8 @@
     Updating crates.io index
 warning: failed to write cache, path: /Users/hamaadabdulwaris/.cargo/registry/index/index.crates.io-1949cf8c6b5b557f/.cache/bl/ak/blake3, error: Permission denied (os error 13)
  Downloading crates ...
-  Downloaded heapless v0.7.17
-error: failed to open `/Users/hamaadabdulwaris/.cargo/registry/cache/index.crates.io-1949cf8c6b5b557f/heapless-0.7.17.crate`
+  Downloaded autocfg v1.5.0
+error: failed to open `/Users/hamaadabdulwaris/.cargo/registry/cache/index.crates.io-1949cf8c6b5b557f/autocfg-1.5.0.crate`
 
 Caused by:
   Permission denied (os error 13)
