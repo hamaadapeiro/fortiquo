@@ -1,8 +1,516 @@
-    Updating crates.io index
-warning: failed to write cache, path: /Users/hamaadabdulwaris/.cargo/registry/index/index.crates.io-1949cf8c6b5b557f/.cache/bl/ak/blake3, error: Permission denied (os error 13)
- Downloading crates ...
-  Downloaded autocfg v1.5.0
-error: failed to open `/Users/hamaadabdulwaris/.cargo/registry/cache/index.crates.io-1949cf8c6b5b557f/autocfg-1.5.0.crate`
+   0.073680250s  INFO prepare_target{force=false package_id=fortiquo-crypto v0.1.0 (/Users/hamaadabdulwaris/Documents/rustProjects/fortiquo/crates/crypto) target="fortiquo_crypto"}: cargo::core::compiler::fingerprint: fingerprint error for fortiquo-crypto v0.1.0 (/Users/hamaadabdulwaris/Documents/rustProjects/fortiquo/crates/crypto)/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("fortiquo_crypto", ["lib"], "/Users/hamaadabdulwaris/Documents/rustProjects/fortiquo/crates/crypto/src/lib.rs", Edition2021) }
+   0.074017250s  INFO prepare_target{force=false package_id=fortiquo-crypto v0.1.0 (/Users/hamaadabdulwaris/Documents/rustProjects/fortiquo/crates/crypto) target="fortiquo_crypto"}: cargo::core::compiler::fingerprint:     err: failed to read `/Users/hamaadabdulwaris/Documents/rustProjects/fortiquo/target/debug/.fingerprint/fortiquo-crypto-4ab49e684d8021af/lib-fortiquo_crypto`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: std::backtrace::Backtrace::create
+   1: cargo_util::paths::read_bytes
+   2: cargo_util::paths::read
+   3: cargo::core::compiler::fingerprint::_compare_old_fingerprint
+   4: cargo::core::compiler::fingerprint::prepare_target
+   5: cargo::core::compiler::compile
+   6: <cargo::core::compiler::build_runner::BuildRunner>::compile
+   7: cargo::ops::cargo_compile::compile_ws
+   8: cargo::ops::cargo_compile::compile_with_exec
+   9: cargo::ops::cargo_compile::compile
+  10: cargo::commands::check::exec
+  11: <cargo::cli::Exec>::exec
+  12: cargo::main
+  13: std::sys::backtrace::__rust_begin_short_backtrace::<fn(), ()>
+  14: std::rt::lang_start::<()>::{closure#0}
+  15: std::rt::lang_start_internal
+  16: _main
+   0.096749917s  INFO prepare_target{force=false package_id=blake3 v1.8.4 target="blake3"}: cargo::core::compiler::fingerprint: fingerprint error for blake3 v1.8.4/Check { test: false }/TargetInner { ..: lib_target("blake3", ["lib"], "/Users/hamaadabdulwaris/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/blake3-1.8.4/src/lib.rs", Edition2024) }
+   0.096758458s  INFO prepare_target{force=false package_id=blake3 v1.8.4 target="blake3"}: cargo::core::compiler::fingerprint:     err: failed to read `/Users/hamaadabdulwaris/Documents/rustProjects/fortiquo/target/debug/.fingerprint/blake3-57eb587eee884768/lib-blake3`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: std::backtrace::Backtrace::create
+   1: cargo_util::paths::read_bytes
+   2: cargo_util::paths::read
+   3: cargo::core::compiler::fingerprint::_compare_old_fingerprint
+   4: cargo::core::compiler::fingerprint::prepare_target
+   5: cargo::core::compiler::compile
+   6: cargo::core::compiler::compile
+   7: <cargo::core::compiler::build_runner::BuildRunner>::compile
+   8: cargo::ops::cargo_compile::compile_ws
+   9: cargo::ops::cargo_compile::compile_with_exec
+  10: cargo::ops::cargo_compile::compile
+  11: cargo::commands::check::exec
+  12: <cargo::cli::Exec>::exec
+  13: cargo::main
+  14: std::sys::backtrace::__rust_begin_short_backtrace::<fn(), ()>
+  15: std::rt::lang_start::<()>::{closure#0}
+  16: std::rt::lang_start_internal
+  17: _main
+   0.096943000s  INFO prepare_target{force=false package_id=arrayref v0.3.9 target="arrayref"}: cargo::core::compiler::fingerprint: fingerprint error for arrayref v0.3.9/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("arrayref", ["lib"], "/Users/hamaadabdulwaris/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/arrayref-0.3.9/src/lib.rs", Edition2015) }
+   0.096947208s  INFO prepare_target{force=false package_id=arrayref v0.3.9 target="arrayref"}: cargo::core::compiler::fingerprint:     err: failed to read `/Users/hamaadabdulwaris/Documents/rustProjects/fortiquo/target/debug/.fingerprint/arrayref-79458df275b0ecea/lib-arrayref`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: std::backtrace::Backtrace::create
+   1: cargo_util::paths::read_bytes
+   2: cargo_util::paths::read
+   3: cargo::core::compiler::fingerprint::_compare_old_fingerprint
+   4: cargo::core::compiler::fingerprint::prepare_target
+   5: cargo::core::compiler::compile
+   6: cargo::core::compiler::compile
+   7: cargo::core::compiler::compile
+   8: <cargo::core::compiler::build_runner::BuildRunner>::compile
+   9: cargo::ops::cargo_compile::compile_ws
+  10: cargo::ops::cargo_compile::compile_with_exec
+  11: cargo::ops::cargo_compile::compile
+  12: cargo::commands::check::exec
+  13: <cargo::cli::Exec>::exec
+  14: cargo::main
+  15: std::sys::backtrace::__rust_begin_short_backtrace::<fn(), ()>
+  16: std::rt::lang_start::<()>::{closure#0}
+  17: std::rt::lang_start_internal
+  18: _main
+   0.097030583s  INFO prepare_target{force=false package_id=arrayvec v0.7.6 target="arrayvec"}: cargo::core::compiler::fingerprint: fingerprint error for arrayvec v0.7.6/Check { test: false }/TargetInner { ..: lib_target("arrayvec", ["lib"], "/Users/hamaadabdulwaris/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/arrayvec-0.7.6/src/lib.rs", Edition2018) }
+   0.097033458s  INFO prepare_target{force=false package_id=arrayvec v0.7.6 target="arrayvec"}: cargo::core::compiler::fingerprint:     err: failed to read `/Users/hamaadabdulwaris/Documents/rustProjects/fortiquo/target/debug/.fingerprint/arrayvec-b3952dc5e60dde4a/lib-arrayvec`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: std::backtrace::Backtrace::create
+   1: cargo_util::paths::read_bytes
+   2: cargo_util::paths::read
+   3: cargo::core::compiler::fingerprint::_compare_old_fingerprint
+   4: cargo::core::compiler::fingerprint::prepare_target
+   5: cargo::core::compiler::compile
+   6: cargo::core::compiler::compile
+   7: cargo::core::compiler::compile
+   8: <cargo::core::compiler::build_runner::BuildRunner>::compile
+   9: cargo::ops::cargo_compile::compile_ws
+  10: cargo::ops::cargo_compile::compile_with_exec
+  11: cargo::ops::cargo_compile::compile
+  12: cargo::commands::check::exec
+  13: <cargo::cli::Exec>::exec
+  14: cargo::main
+  15: std::sys::backtrace::__rust_begin_short_backtrace::<fn(), ()>
+  16: std::rt::lang_start::<()>::{closure#0}
+  17: std::rt::lang_start_internal
+  18: _main
+   0.097177833s  INFO prepare_target{force=false package_id=blake3 v1.8.4 target="build-script-build"}: cargo::core::compiler::fingerprint: fingerprint error for blake3 v1.8.4/RunCustomBuild/TargetInner { ..: custom_build_target("build-script-build", "/Users/hamaadabdulwaris/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/blake3-1.8.4/build.rs", Edition2024) }
+   0.097180750s  INFO prepare_target{force=false package_id=blake3 v1.8.4 target="build-script-build"}: cargo::core::compiler::fingerprint:     err: failed to read `/Users/hamaadabdulwaris/Documents/rustProjects/fortiquo/target/debug/.fingerprint/blake3-fbff76feaf789d11/run-build-script-build-script-build`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: std::backtrace::Backtrace::create
+   1: cargo_util::paths::read_bytes
+   2: cargo_util::paths::read
+   3: cargo::core::compiler::fingerprint::_compare_old_fingerprint
+   4: cargo::core::compiler::fingerprint::prepare_target
+   5: cargo::core::compiler::custom_build::build_work
+   6: cargo::core::compiler::compile
+   7: cargo::core::compiler::compile
+   8: cargo::core::compiler::compile
+   9: <cargo::core::compiler::build_runner::BuildRunner>::compile
+  10: cargo::ops::cargo_compile::compile_ws
+  11: cargo::ops::cargo_compile::compile_with_exec
+  12: cargo::ops::cargo_compile::compile
+  13: cargo::commands::check::exec
+  14: <cargo::cli::Exec>::exec
+  15: cargo::main
+  16: std::sys::backtrace::__rust_begin_short_backtrace::<fn(), ()>
+  17: std::rt::lang_start::<()>::{closure#0}
+  18: std::rt::lang_start_internal
+  19: _main
+   0.097230083s  INFO prepare_target{force=false package_id=blake3 v1.8.4 target="build-script-build"}: cargo::core::compiler::fingerprint: fingerprint error for blake3 v1.8.4/Build/TargetInner { ..: custom_build_target("build-script-build", "/Users/hamaadabdulwaris/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/blake3-1.8.4/build.rs", Edition2024) }
+   0.097233000s  INFO prepare_target{force=false package_id=blake3 v1.8.4 target="build-script-build"}: cargo::core::compiler::fingerprint:     err: failed to read `/Users/hamaadabdulwaris/Documents/rustProjects/fortiquo/target/debug/.fingerprint/blake3-7eabeb500bc54e82/build-script-build-script-build`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: std::backtrace::Backtrace::create
+   1: cargo_util::paths::read_bytes
+   2: cargo_util::paths::read
+   3: cargo::core::compiler::fingerprint::_compare_old_fingerprint
+   4: cargo::core::compiler::fingerprint::prepare_target
+   5: cargo::core::compiler::compile
+   6: cargo::core::compiler::compile
+   7: cargo::core::compiler::compile
+   8: cargo::core::compiler::compile
+   9: <cargo::core::compiler::build_runner::BuildRunner>::compile
+  10: cargo::ops::cargo_compile::compile_ws
+  11: cargo::ops::cargo_compile::compile_with_exec
+  12: cargo::ops::cargo_compile::compile
+  13: cargo::commands::check::exec
+  14: <cargo::cli::Exec>::exec
+  15: cargo::main
+  16: std::sys::backtrace::__rust_begin_short_backtrace::<fn(), ()>
+  17: std::rt::lang_start::<()>::{closure#0}
+  18: std::rt::lang_start_internal
+  19: _main
+   0.097336583s  INFO prepare_target{force=false package_id=cc v1.2.60 target="cc"}: cargo::core::compiler::fingerprint: fingerprint error for cc v1.2.60/Build/TargetInner { ..: lib_target("cc", ["lib"], "/Users/hamaadabdulwaris/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cc-1.2.60/src/lib.rs", Edition2018) }
+   0.097339500s  INFO prepare_target{force=false package_id=cc v1.2.60 target="cc"}: cargo::core::compiler::fingerprint:     err: failed to read `/Users/hamaadabdulwaris/Documents/rustProjects/fortiquo/target/debug/.fingerprint/cc-2066330bf8c66fb5/lib-cc`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: std::backtrace::Backtrace::create
+   1: cargo_util::paths::read_bytes
+   2: cargo_util::paths::read
+   3: cargo::core::compiler::fingerprint::_compare_old_fingerprint
+   4: cargo::core::compiler::fingerprint::prepare_target
+   5: cargo::core::compiler::compile
+   6: cargo::core::compiler::compile
+   7: cargo::core::compiler::compile
+   8: cargo::core::compiler::compile
+   9: cargo::core::compiler::compile
+  10: <cargo::core::compiler::build_runner::BuildRunner>::compile
+  11: cargo::ops::cargo_compile::compile_ws
+  12: cargo::ops::cargo_compile::compile_with_exec
+  13: cargo::ops::cargo_compile::compile
+  14: cargo::commands::check::exec
+  15: <cargo::cli::Exec>::exec
+  16: cargo::main
+  17: std::sys::backtrace::__rust_begin_short_backtrace::<fn(), ()>
+  18: std::rt::lang_start::<()>::{closure#0}
+  19: std::rt::lang_start_internal
+  20: _main
+   0.097452708s  INFO prepare_target{force=false package_id=find-msvc-tools v0.1.9 target="find_msvc_tools"}: cargo::core::compiler::fingerprint: fingerprint error for find-msvc-tools v0.1.9/Build/TargetInner { ..: lib_target("find_msvc_tools", ["lib"], "/Users/hamaadabdulwaris/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/find-msvc-tools-0.1.9/src/lib.rs", Edition2018) }
+   0.097455542s  INFO prepare_target{force=false package_id=find-msvc-tools v0.1.9 target="find_msvc_tools"}: cargo::core::compiler::fingerprint:     err: failed to read `/Users/hamaadabdulwaris/Documents/rustProjects/fortiquo/target/debug/.fingerprint/find-msvc-tools-94c27e76ec1ee97d/lib-find_msvc_tools`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: std::backtrace::Backtrace::create
+   1: cargo_util::paths::read_bytes
+   2: cargo_util::paths::read
+   3: cargo::core::compiler::fingerprint::_compare_old_fingerprint
+   4: cargo::core::compiler::fingerprint::prepare_target
+   5: cargo::core::compiler::compile
+   6: cargo::core::compiler::compile
+   7: cargo::core::compiler::compile
+   8: cargo::core::compiler::compile
+   9: cargo::core::compiler::compile
+  10: cargo::core::compiler::compile
+  11: <cargo::core::compiler::build_runner::BuildRunner>::compile
+  12: cargo::ops::cargo_compile::compile_ws
+  13: cargo::ops::cargo_compile::compile_with_exec
+  14: cargo::ops::cargo_compile::compile
+  15: cargo::commands::check::exec
+  16: <cargo::cli::Exec>::exec
+  17: cargo::main
+  18: std::sys::backtrace::__rust_begin_short_backtrace::<fn(), ()>
+  19: std::rt::lang_start::<()>::{closure#0}
+  20: std::rt::lang_start_internal
+  21: _main
+   0.097534250s  INFO prepare_target{force=false package_id=shlex v1.3.0 target="shlex"}: cargo::core::compiler::fingerprint: fingerprint error for shlex v1.3.0/Build/TargetInner { name_inferred: true, ..: lib_target("shlex", ["lib"], "/Users/hamaadabdulwaris/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/shlex-1.3.0/src/lib.rs", Edition2015) }
+   0.097537833s  INFO prepare_target{force=false package_id=shlex v1.3.0 target="shlex"}: cargo::core::compiler::fingerprint:     err: failed to read `/Users/hamaadabdulwaris/Documents/rustProjects/fortiquo/target/debug/.fingerprint/shlex-e892f1b7f50ab3c3/lib-shlex`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: std::backtrace::Backtrace::create
+   1: cargo_util::paths::read_bytes
+   2: cargo_util::paths::read
+   3: cargo::core::compiler::fingerprint::_compare_old_fingerprint
+   4: cargo::core::compiler::fingerprint::prepare_target
+   5: cargo::core::compiler::compile
+   6: cargo::core::compiler::compile
+   7: cargo::core::compiler::compile
+   8: cargo::core::compiler::compile
+   9: cargo::core::compiler::compile
+  10: cargo::core::compiler::compile
+  11: <cargo::core::compiler::build_runner::BuildRunner>::compile
+  12: cargo::ops::cargo_compile::compile_ws
+  13: cargo::ops::cargo_compile::compile_with_exec
+  14: cargo::ops::cargo_compile::compile
+  15: cargo::commands::check::exec
+  16: <cargo::cli::Exec>::exec
+  17: cargo::main
+  18: std::sys::backtrace::__rust_begin_short_backtrace::<fn(), ()>
+  19: std::rt::lang_start::<()>::{closure#0}
+  20: std::rt::lang_start_internal
+  21: _main
+   0.097614083s  INFO prepare_target{force=false package_id=cfg-if v1.0.4 target="cfg_if"}: cargo::core::compiler::fingerprint: fingerprint error for cfg-if v1.0.4/Check { test: false }/TargetInner { ..: lib_target("cfg_if", ["lib"], "/Users/hamaadabdulwaris/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cfg-if-1.0.4/src/lib.rs", Edition2018) }
+   0.097616625s  INFO prepare_target{force=false package_id=cfg-if v1.0.4 target="cfg_if"}: cargo::core::compiler::fingerprint:     err: failed to read `/Users/hamaadabdulwaris/Documents/rustProjects/fortiquo/target/debug/.fingerprint/cfg-if-dd1fd06f8ace3a1c/lib-cfg_if`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: std::backtrace::Backtrace::create
+   1: cargo_util::paths::read_bytes
+   2: cargo_util::paths::read
+   3: cargo::core::compiler::fingerprint::_compare_old_fingerprint
+   4: cargo::core::compiler::fingerprint::prepare_target
+   5: cargo::core::compiler::compile
+   6: cargo::core::compiler::compile
+   7: cargo::core::compiler::compile
+   8: <cargo::core::compiler::build_runner::BuildRunner>::compile
+   9: cargo::ops::cargo_compile::compile_ws
+  10: cargo::ops::cargo_compile::compile_with_exec
+  11: cargo::ops::cargo_compile::compile
+  12: cargo::commands::check::exec
+  13: <cargo::cli::Exec>::exec
+  14: cargo::main
+  15: std::sys::backtrace::__rust_begin_short_backtrace::<fn(), ()>
+  16: std::rt::lang_start::<()>::{closure#0}
+  17: std::rt::lang_start_internal
+  18: _main
+   0.097689958s  INFO prepare_target{force=false package_id=constant_time_eq v0.4.2 target="constant_time_eq"}: cargo::core::compiler::fingerprint: fingerprint error for constant_time_eq v0.4.2/Check { test: false }/TargetInner { ..: lib_target("constant_time_eq", ["lib"], "/Users/hamaadabdulwaris/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/constant_time_eq-0.4.2/src/lib.rs", Edition2024) }
+   0.097692708s  INFO prepare_target{force=false package_id=constant_time_eq v0.4.2 target="constant_time_eq"}: cargo::core::compiler::fingerprint:     err: failed to read `/Users/hamaadabdulwaris/Documents/rustProjects/fortiquo/target/debug/.fingerprint/constant_time_eq-cf70d3446a234d03/lib-constant_time_eq`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: std::backtrace::Backtrace::create
+   1: cargo_util::paths::read_bytes
+   2: cargo_util::paths::read
+   3: cargo::core::compiler::fingerprint::_compare_old_fingerprint
+   4: cargo::core::compiler::fingerprint::prepare_target
+   5: cargo::core::compiler::compile
+   6: cargo::core::compiler::compile
+   7: cargo::core::compiler::compile
+   8: <cargo::core::compiler::build_runner::BuildRunner>::compile
+   9: cargo::ops::cargo_compile::compile_ws
+  10: cargo::ops::cargo_compile::compile_with_exec
+  11: cargo::ops::cargo_compile::compile
+  12: cargo::commands::check::exec
+  13: <cargo::cli::Exec>::exec
+  14: cargo::main
+  15: std::sys::backtrace::__rust_begin_short_backtrace::<fn(), ()>
+  16: std::rt::lang_start::<()>::{closure#0}
+  17: std::rt::lang_start_internal
+  18: _main
+   0.097785958s  INFO prepare_target{force=false package_id=digest v0.11.2 target="digest"}: cargo::core::compiler::fingerprint: fingerprint error for digest v0.11.2/Check { test: false }/TargetInner { ..: lib_target("digest", ["lib"], "/Users/hamaadabdulwaris/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/digest-0.11.2/src/lib.rs", Edition2024) }
+   0.097788667s  INFO prepare_target{force=false package_id=digest v0.11.2 target="digest"}: cargo::core::compiler::fingerprint:     err: failed to read `/Users/hamaadabdulwaris/Documents/rustProjects/fortiquo/target/debug/.fingerprint/digest-f1ed98553de2c37d/lib-digest`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: std::backtrace::Backtrace::create
+   1: cargo_util::paths::read_bytes
+   2: cargo_util::paths::read
+   3: cargo::core::compiler::fingerprint::_compare_old_fingerprint
+   4: cargo::core::compiler::fingerprint::prepare_target
+   5: cargo::core::compiler::compile
+   6: cargo::core::compiler::compile
+   7: cargo::core::compiler::compile
+   8: <cargo::core::compiler::build_runner::BuildRunner>::compile
+   9: cargo::ops::cargo_compile::compile_ws
+  10: cargo::ops::cargo_compile::compile_with_exec
+  11: cargo::ops::cargo_compile::compile
+  12: cargo::commands::check::exec
+  13: <cargo::cli::Exec>::exec
+  14: cargo::main
+  15: std::sys::backtrace::__rust_begin_short_backtrace::<fn(), ()>
+  16: std::rt::lang_start::<()>::{closure#0}
+  17: std::rt::lang_start_internal
+  18: _main
+   0.097914958s  INFO prepare_target{force=false package_id=block-buffer v0.12.0 target="block_buffer"}: cargo::core::compiler::fingerprint: fingerprint error for block-buffer v0.12.0/Check { test: false }/TargetInner { ..: lib_target("block_buffer", ["lib"], "/Users/hamaadabdulwaris/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/block-buffer-0.12.0/src/lib.rs", Edition2024) }
+   0.097917625s  INFO prepare_target{force=false package_id=block-buffer v0.12.0 target="block_buffer"}: cargo::core::compiler::fingerprint:     err: failed to read `/Users/hamaadabdulwaris/Documents/rustProjects/fortiquo/target/debug/.fingerprint/block-buffer-de980af0dd910959/lib-block_buffer`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: std::backtrace::Backtrace::create
+   1: cargo_util::paths::read_bytes
+   2: cargo_util::paths::read
+   3: cargo::core::compiler::fingerprint::_compare_old_fingerprint
+   4: cargo::core::compiler::fingerprint::prepare_target
+   5: cargo::core::compiler::compile
+   6: cargo::core::compiler::compile
+   7: cargo::core::compiler::compile
+   8: cargo::core::compiler::compile
+   9: <cargo::core::compiler::build_runner::BuildRunner>::compile
+  10: cargo::ops::cargo_compile::compile_ws
+  11: cargo::ops::cargo_compile::compile_with_exec
+  12: cargo::ops::cargo_compile::compile
+  13: cargo::commands::check::exec
+  14: <cargo::cli::Exec>::exec
+  15: cargo::main
+  16: std::sys::backtrace::__rust_begin_short_backtrace::<fn(), ()>
+  17: std::rt::lang_start::<()>::{closure#0}
+  18: std::rt::lang_start_internal
+  19: _main
+   0.098012708s  INFO prepare_target{force=false package_id=hybrid-array v0.4.10 target="hybrid_array"}: cargo::core::compiler::fingerprint: fingerprint error for hybrid-array v0.4.10/Check { test: false }/TargetInner { ..: lib_target("hybrid_array", ["lib"], "/Users/hamaadabdulwaris/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/hybrid-array-0.4.10/src/lib.rs", Edition2024) }
+   0.098015250s  INFO prepare_target{force=false package_id=hybrid-array v0.4.10 target="hybrid_array"}: cargo::core::compiler::fingerprint:     err: failed to read `/Users/hamaadabdulwaris/Documents/rustProjects/fortiquo/target/debug/.fingerprint/hybrid-array-1de202843450610b/lib-hybrid_array`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: std::backtrace::Backtrace::create
+   1: cargo_util::paths::read_bytes
+   2: cargo_util::paths::read
+   3: cargo::core::compiler::fingerprint::_compare_old_fingerprint
+   4: cargo::core::compiler::fingerprint::prepare_target
+   5: cargo::core::compiler::compile
+   6: cargo::core::compiler::compile
+   7: cargo::core::compiler::compile
+   8: cargo::core::compiler::compile
+   9: cargo::core::compiler::compile
+  10: <cargo::core::compiler::build_runner::BuildRunner>::compile
+  11: cargo::ops::cargo_compile::compile_ws
+  12: cargo::ops::cargo_compile::compile_with_exec
+  13: cargo::ops::cargo_compile::compile
+  14: cargo::commands::check::exec
+  15: <cargo::cli::Exec>::exec
+  16: cargo::main
+  17: std::sys::backtrace::__rust_begin_short_backtrace::<fn(), ()>
+  18: std::rt::lang_start::<()>::{closure#0}
+  19: std::rt::lang_start_internal
+  20: _main
+   0.098116375s  INFO prepare_target{force=false package_id=typenum v1.20.0 target="typenum"}: cargo::core::compiler::fingerprint: fingerprint error for typenum v1.20.0/Check { test: false }/TargetInner { ..: lib_target("typenum", ["lib"], "/Users/hamaadabdulwaris/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/typenum-1.20.0/src/lib.rs", Edition2018) }
+   0.098118958s  INFO prepare_target{force=false package_id=typenum v1.20.0 target="typenum"}: cargo::core::compiler::fingerprint:     err: failed to read `/Users/hamaadabdulwaris/Documents/rustProjects/fortiquo/target/debug/.fingerprint/typenum-04f962dc80e9993d/lib-typenum`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: std::backtrace::Backtrace::create
+   1: cargo_util::paths::read_bytes
+   2: cargo_util::paths::read
+   3: cargo::core::compiler::fingerprint::_compare_old_fingerprint
+   4: cargo::core::compiler::fingerprint::prepare_target
+   5: cargo::core::compiler::compile
+   6: cargo::core::compiler::compile
+   7: cargo::core::compiler::compile
+   8: cargo::core::compiler::compile
+   9: cargo::core::compiler::compile
+  10: cargo::core::compiler::compile
+  11: <cargo::core::compiler::build_runner::BuildRunner>::compile
+  12: cargo::ops::cargo_compile::compile_ws
+  13: cargo::ops::cargo_compile::compile_with_exec
+  14: cargo::ops::cargo_compile::compile
+  15: cargo::commands::check::exec
+  16: <cargo::cli::Exec>::exec
+  17: cargo::main
+  18: std::sys::backtrace::__rust_begin_short_backtrace::<fn(), ()>
+  19: std::rt::lang_start::<()>::{closure#0}
+  20: std::rt::lang_start_internal
+  21: _main
+   0.098197792s  INFO prepare_target{force=false package_id=crypto-common v0.2.1 target="crypto_common"}: cargo::core::compiler::fingerprint: fingerprint error for crypto-common v0.2.1/Check { test: false }/TargetInner { ..: lib_target("crypto_common", ["lib"], "/Users/hamaadabdulwaris/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/crypto-common-0.2.1/src/lib.rs", Edition2024) }
+   0.098200667s  INFO prepare_target{force=false package_id=crypto-common v0.2.1 target="crypto_common"}: cargo::core::compiler::fingerprint:     err: failed to read `/Users/hamaadabdulwaris/Documents/rustProjects/fortiquo/target/debug/.fingerprint/crypto-common-df5c7412b9cec1cb/lib-crypto_common`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: std::backtrace::Backtrace::create
+   1: cargo_util::paths::read_bytes
+   2: cargo_util::paths::read
+   3: cargo::core::compiler::fingerprint::_compare_old_fingerprint
+   4: cargo::core::compiler::fingerprint::prepare_target
+   5: cargo::core::compiler::compile
+   6: cargo::core::compiler::compile
+   7: cargo::core::compiler::compile
+   8: cargo::core::compiler::compile
+   9: <cargo::core::compiler::build_runner::BuildRunner>::compile
+  10: cargo::ops::cargo_compile::compile_ws
+  11: cargo::ops::cargo_compile::compile_with_exec
+  12: cargo::ops::cargo_compile::compile
+  13: cargo::commands::check::exec
+  14: <cargo::cli::Exec>::exec
+  15: cargo::main
+  16: std::sys::backtrace::__rust_begin_short_backtrace::<fn(), ()>
+  17: std::rt::lang_start::<()>::{closure#0}
+  18: std::rt::lang_start_internal
+  19: _main
+   0.098296000s  INFO prepare_target{force=false package_id=ctutils v0.4.2 target="ctutils"}: cargo::core::compiler::fingerprint: fingerprint error for ctutils v0.4.2/Check { test: false }/TargetInner { ..: lib_target("ctutils", ["lib"], "/Users/hamaadabdulwaris/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ctutils-0.4.2/src/lib.rs", Edition2024) }
+   0.098298500s  INFO prepare_target{force=false package_id=ctutils v0.4.2 target="ctutils"}: cargo::core::compiler::fingerprint:     err: failed to read `/Users/hamaadabdulwaris/Documents/rustProjects/fortiquo/target/debug/.fingerprint/ctutils-1e6d84f13dbdc170/lib-ctutils`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: std::backtrace::Backtrace::create
+   1: cargo_util::paths::read_bytes
+   2: cargo_util::paths::read
+   3: cargo::core::compiler::fingerprint::_compare_old_fingerprint
+   4: cargo::core::compiler::fingerprint::prepare_target
+   5: cargo::core::compiler::compile
+   6: cargo::core::compiler::compile
+   7: cargo::core::compiler::compile
+   8: cargo::core::compiler::compile
+   9: <cargo::core::compiler::build_runner::BuildRunner>::compile
+  10: cargo::ops::cargo_compile::compile_ws
+  11: cargo::ops::cargo_compile::compile_with_exec
+  12: cargo::ops::cargo_compile::compile
+  13: cargo::commands::check::exec
+  14: <cargo::cli::Exec>::exec
+  15: cargo::main
+  16: std::sys::backtrace::__rust_begin_short_backtrace::<fn(), ()>
+  17: std::rt::lang_start::<()>::{closure#0}
+  18: std::rt::lang_start_internal
+  19: _main
+   0.098392333s  INFO prepare_target{force=false package_id=cmov v0.5.3 target="cmov"}: cargo::core::compiler::fingerprint: fingerprint error for cmov v0.5.3/Check { test: false }/TargetInner { ..: lib_target("cmov", ["lib"], "/Users/hamaadabdulwaris/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cmov-0.5.3/src/lib.rs", Edition2024) }
+   0.098394958s  INFO prepare_target{force=false package_id=cmov v0.5.3 target="cmov"}: cargo::core::compiler::fingerprint:     err: failed to read `/Users/hamaadabdulwaris/Documents/rustProjects/fortiquo/target/debug/.fingerprint/cmov-b5496f4077d1e121/lib-cmov`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: std::backtrace::Backtrace::create
+   1: cargo_util::paths::read_bytes
+   2: cargo_util::paths::read
+   3: cargo::core::compiler::fingerprint::_compare_old_fingerprint
+   4: cargo::core::compiler::fingerprint::prepare_target
+   5: cargo::core::compiler::compile
+   6: cargo::core::compiler::compile
+   7: cargo::core::compiler::compile
+   8: cargo::core::compiler::compile
+   9: cargo::core::compiler::compile
+  10: <cargo::core::compiler::build_runner::BuildRunner>::compile
+  11: cargo::ops::cargo_compile::compile_ws
+  12: cargo::ops::cargo_compile::compile_with_exec
+  13: cargo::ops::cargo_compile::compile
+  14: cargo::commands::check::exec
+  15: <cargo::cli::Exec>::exec
+  16: cargo::main
+  17: std::sys::backtrace::__rust_begin_short_backtrace::<fn(), ()>
+  18: std::rt::lang_start::<()>::{closure#0}
+  19: std::rt::lang_start_internal
+  20: _main
+   0.098473792s  INFO prepare_target{force=false package_id=bytes v1.11.1 target="bytes"}: cargo::core::compiler::fingerprint: fingerprint error for bytes v1.11.1/Check { test: false }/TargetInner { ..: lib_target("bytes", ["lib"], "/Users/hamaadabdulwaris/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/bytes-1.11.1/src/lib.rs", Edition2021) }
+   0.098476458s  INFO prepare_target{force=false package_id=bytes v1.11.1 target="bytes"}: cargo::core::compiler::fingerprint:     err: failed to read `/Users/hamaadabdulwaris/Documents/rustProjects/fortiquo/target/debug/.fingerprint/bytes-a9009ca5fd7b5ae6/lib-bytes`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: std::backtrace::Backtrace::create
+   1: cargo_util::paths::read_bytes
+   2: cargo_util::paths::read
+   3: cargo::core::compiler::fingerprint::_compare_old_fingerprint
+   4: cargo::core::compiler::fingerprint::prepare_target
+   5: cargo::core::compiler::compile
+   6: cargo::core::compiler::compile
+   7: <cargo::core::compiler::build_runner::BuildRunner>::compile
+   8: cargo::ops::cargo_compile::compile_ws
+   9: cargo::ops::cargo_compile::compile_with_exec
+  10: cargo::ops::cargo_compile::compile
+  11: cargo::commands::check::exec
+  12: <cargo::cli::Exec>::exec
+  13: cargo::main
+  14: std::sys::backtrace::__rust_begin_short_backtrace::<fn(), ()>
+  15: std::rt::lang_start::<()>::{closure#0}
+  16: std::rt::lang_start_internal
+  17: _main
+   0.098864667s  INFO prepare_target{force=false package_id=fortiquo-types v0.1.0 (/Users/hamaadabdulwaris/Documents/rustProjects/fortiquo/crates/types) target="fortiquo_types"}: cargo::core::compiler::fingerprint: fingerprint dirty for fortiquo-types v0.1.0 (/Users/hamaadabdulwaris/Documents/rustProjects/fortiquo/crates/types)/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("fortiquo_types", ["lib"], "/Users/hamaadabdulwaris/Documents/rustProjects/fortiquo/crates/types/src/lib.rs", Edition2021) }
+   0.098872458s  INFO prepare_target{force=false package_id=fortiquo-types v0.1.0 (/Users/hamaadabdulwaris/Documents/rustProjects/fortiquo/crates/types) target="fortiquo_types"}: cargo::core::compiler::fingerprint:     dirty: UnitDependencyInfoChanged { unit: UnitIndex(99) }
+error: failed to write `/Users/hamaadabdulwaris/Documents/rustProjects/fortiquo/target/debug/.fingerprint/fortiquo-types-075e0d3785b36cb3/lib-fortiquo_types`
 
 Caused by:
   Permission denied (os error 13)

@@ -1,5 +1,5 @@
-/Users/hamaadabdulwaris/Documents/rustProjects/fortiquo/target/debug/build/zerocopy-792b82cdf346b680/build_script_build-792b82cdf346b680.d: /tmp/cargo_home/registry/src/index.crates.io-1949cf8c6b5b557f/zerocopy-0.8.48/build.rs
+/Users/hamaadabdulwaris/Documents/rustProjects/fortiquo/target/debug/build/zerocopy-792b82cdf346b680/build_script_build-792b82cdf346b680.d: /Users/hamaadabdulwaris/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/zerocopy-0.8.48/build.rs
 
-/Users/hamaadabdulwaris/Documents/rustProjects/fortiquo/target/debug/build/zerocopy-792b82cdf346b680/build_script_build-792b82cdf346b680: /tmp/cargo_home/registry/src/index.crates.io-1949cf8c6b5b557f/zerocopy-0.8.48/build.rs
+/Users/hamaadabdulwaris/Documents/rustProjects/fortiquo/target/debug/build/zerocopy-792b82cdf346b680/build_script_build-792b82cdf346b680: /Users/hamaadabdulwaris/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/zerocopy-0.8.48/build.rs
 
-/tmp/cargo_home/registry/src/index.crates.io-1949cf8c6b5b557f/zerocopy-0.8.48/build.rs:
+/Users/hamaadabdulwaris/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/zerocopy-0.8.48/build.rs:

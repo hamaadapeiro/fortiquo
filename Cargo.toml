@@ -4,6 +4,7 @@ resolver = "2"
 members = [
     "crates/types",
     "crates/crypto",
+    "crates/revm",
 ]
 
 # Future crates to be added in subsequent phases

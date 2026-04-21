@@ -1,5 +1,5 @@
 use crate::error::CryptoError;
-use crate::address_deriver::{Blake3AddressDeriver, AddressDeriver};
+use crate::address_deriver::{AddressDeriver, Blake3AddressDeriver};
 use crate::schemes::{PublicKeyScheme, Signer};
 use fortiquo_types::{Address, AlgorithmId, PublicKeyBytes, SignatureBytes};
 
@@ -36,14 +36,16 @@ impl MlDsa44Keypair {
         // Public key: first 1184 bytes (repeated pattern from hash)
         let mut public_key_bytes = vec![0u8; 1184];
         for i in 0..1184 {
-            public_key_bytes[i] = hash_bytes[(i % 32)] ^ (i as u8);
+            public_key_bytes[i] = hash_bytes[i % 32] ^ (i as u8);
         }
 
         // Private key: next 2544 bytes (ML-DSA-44 private key size)
         let mut private_key = vec![0u8; 2544];
-        let seed_hash2 = blake3::hash(&[&seed, &hash_bytes].concat());
+        let mut combined = seed.to_vec();
+        combined.extend_from_slice(hash_bytes);
+        let seed_hash2 = blake3::hash(&combined);
         for i in 0..2544 {
-            private_key[i] = seed_hash2.as_bytes()[(i % 32)] ^ ((i >> 8) as u8);
+            private_key[i] = seed_hash2.as_bytes()[i % 32] ^ ((i >> 8) as u8);
         }
 
         Ok(MlDsa44Keypair {
@@ -80,7 +82,7 @@ impl Signer for MlDsa44Keypair {
         // Generate 4668-byte signature
         let mut signature = vec![0u8; 4668];
         for i in 0..4668 {
-            signature[i] = sig_hash.as_bytes()[(i % 32)] ^ (i as u8);
+            signature[i] = sig_hash.as_bytes()[i % 32] ^ (i as u8);
         }
 
         Ok(SignatureBytes::new(signature))
@@ -99,7 +101,12 @@ impl Signer for MlDsa44Keypair {
 pub struct MlDsa44Scheme;
 
 impl PublicKeyScheme for MlDsa44Scheme {
-    fn verify(&self, message: &[u8], signature: &SignatureBytes, public_key: &PublicKeyBytes) -> Result<bool, CryptoError> {
+    fn verify(
+        &self,
+        message: &[u8],
+        signature: &SignatureBytes,
+        public_key: &PublicKeyBytes,
+    ) -> Result<bool, CryptoError> {
         // Test implementation: recompute signature from message + public key hash
         if signature.len() != 4668 {
             return Err(CryptoError::InvalidSignature);
@@ -113,7 +120,7 @@ impl PublicKeyScheme for MlDsa44Scheme {
         // Verify signature matches expected pattern
         let mut expected_sig = vec![0u8; 4668];
         for i in 0..4668 {
-            expected_sig[i] = expected_sig_hash.as_bytes()[(i % 32)] ^ (i as u8);
+            expected_sig[i] = expected_sig_hash.as_bytes()[i % 32] ^ (i as u8);
         }
 
         Ok(signature.as_slice() == expected_sig.as_slice())
@@ -138,14 +145,14 @@ mod tests {
 
     #[test]
     fn test_ml_dsa44_keypair_generation() {
-        let seed = b"test seed for ml-dsa-44";
+        let seed = b"test seed for ml-dsa-44 with 32 bytes total";
         let keypair = MlDsa44Keypair::from_seed(seed).unwrap();
         assert_eq!(keypair.public_key().len(), 1184);
     }
 
     #[test]
     fn test_ml_dsa44_deterministic() {
-        let seed = b"same seed";
+        let seed = b"same seed long enough for thirty-two";
         let kp1 = MlDsa44Keypair::from_seed(seed).unwrap();
         let kp2 = MlDsa44Keypair::from_seed(seed).unwrap();
 
@@ -154,7 +161,7 @@ mod tests {
 
     #[test]
     fn test_ml_dsa44_signing() {
-        let seed = b"signing test seed";
+        let seed = b"signing test seed long enough for 32 bytes";
         let keypair = MlDsa44Keypair::from_seed(seed).unwrap();
 
         let message = b"hello, blockchain";
@@ -168,7 +175,7 @@ mod tests {
 
     #[test]
     fn test_ml_dsa44_verification() {
-        let seed = b"verification test";
+        let seed = b"verification test long enough for 32 byte";
         let keypair = MlDsa44Keypair::from_seed(seed).unwrap();
         let scheme = MlDsa44Scheme;
 
@@ -183,7 +190,7 @@ mod tests {
 
     #[test]
     fn test_ml_dsa44_verification_fails_tampered_sig() {
-        let seed = b"verification test";
+        let seed = b"verification test long enough for 32 byte";
         let keypair = MlDsa44Keypair::from_seed(seed).unwrap();
         let scheme = MlDsa44Scheme;
 
@@ -201,7 +208,7 @@ mod tests {
 
     #[test]
     fn test_ml_dsa44_verification_fails_wrong_message() {
-        let seed = b"verification test";
+        let seed = b"verification test long enough for 32 byte";
         let keypair = MlDsa44Keypair::from_seed(seed).unwrap();
         let scheme = MlDsa44Scheme;
 
@@ -216,7 +223,7 @@ mod tests {
 
     #[test]
     fn test_ml_dsa44_address_derivation() {
-        let seed = b"address test";
+        let seed = b"address test long enough for thirty-two bytes";
         let keypair = MlDsa44Keypair::from_seed(seed).unwrap();
         let addr = keypair.address().unwrap();
 
