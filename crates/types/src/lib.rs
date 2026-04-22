@@ -21,7 +21,7 @@ pub mod validator;
 
 pub use account::{Account, Nonce};
 pub use address::Address;
-pub use block::{Block, BlockBody, BlockHeader, BlockNumber};
+pub use block::{Block, BlockBody, BlockHeader, BlockNumber, PohEntry};
 pub use error::TypeError;
 pub use hash::{BlockHash, Hash, TxHash};
 pub use receipt::{ExecutionStatus, LogEntry, Receipt};

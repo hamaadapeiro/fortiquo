@@ -1,8 +1,12 @@
 use crate::error::ExecutionError;
 use crate::state::{StateChanges, StateManager};
 use crate::EvmConfig;
+use fortiquo_crypto::address_deriver::Blake3AddressDeriver;
+use fortiquo_crypto::ml_dsa::MlDsa44Scheme;
+use fortiquo_crypto::schemes::PublicKeyScheme;
+use fortiquo_crypto::AddressDeriver;
 use fortiquo_types::{
-    Address, ExecutionStatus, LogEntry, Receipt, SignedTransaction, TxHash,
+    Address, AlgorithmId, ExecutionStatus, LogEntry, Receipt, SignedTransaction, TxHash,
     UnsignedTransaction,
 };
 use std::collections::HashMap;
@@ -102,38 +106,78 @@ impl Executor {
         Ok(ExecutionResult::success(gas_used, vec![]))
     }
 
+    /// Derive the sender address from the ML-DSA-44 public key (never trust `to` for sender).
+    pub fn derive_sender_address(tx: &SignedTransaction) -> Result<Address, ExecutionError> {
+        let deriver = Blake3AddressDeriver;
+        deriver
+            .derive_address(&tx.public_key)
+            .map_err(|e| ExecutionError::InvalidTransaction(format!("address derive: {e}")))
+    }
+
+    /// Verify ML-DSA-44 signature and derive the sender address.
+    pub fn verify_and_derive_sender(tx: &SignedTransaction) -> Result<Address, ExecutionError> {
+        if tx.algorithm_id != AlgorithmId::MlDsa44 {
+            return Err(ExecutionError::InvalidTransaction(
+                "unsupported algorithm".into(),
+            ));
+        }
+        let scheme = MlDsa44Scheme;
+        let msg = tx
+            .signature_bytes()
+            .map_err(|e| ExecutionError::SerializationError(e.to_string()))?;
+        let ok = scheme
+            .verify(&msg, &tx.signature, &tx.public_key)
+            .map_err(|e| ExecutionError::InvalidTransaction(format!("verify: {e}")))?;
+        if !ok {
+            return Err(ExecutionError::InvalidTransaction(
+                "invalid signature".into(),
+            ));
+        }
+        Self::derive_sender_address(tx)
+    }
+
     /// Execute a signed transaction (full validation and execution).
     pub fn execute_signed(
         &mut self,
         tx: &SignedTransaction,
     ) -> Result<ExecutionResult, ExecutionError> {
-        // Validate sender address from signature (in production)
-        // For MVP, we'll skip full signature verification
+        let sender = Self::verify_and_derive_sender(tx)?;
+        self.execute_signed_for_sender(tx, sender)
+    }
 
-        // Get sender account state
-        let mut sender_account = self.state.get_account(&Address::new([0u8; 20]));
+    /// Execute a signed transaction for an already-verified sender address.
+    pub fn execute_signed_for_sender(
+        &mut self,
+        tx: &SignedTransaction,
+        sender: Address,
+    ) -> Result<ExecutionResult, ExecutionError> {
+        if tx.unsigned_tx.chain_id != self.config.chain_id {
+            return Err(ExecutionError::InvalidTransaction(
+                "Invalid chain ID".to_string(),
+            ));
+        }
 
-        // Check nonce
+        let mut sender_account = self.state.get_account(&sender);
+
         if sender_account.nonce > tx.unsigned_tx.nonce {
             return Err(ExecutionError::InvalidNonce);
         }
 
-        // Check balance
         let total_cost = tx.unsigned_tx.value
             + (tx.unsigned_tx.gas_limit as u128 * tx.unsigned_tx.max_fee_per_gas);
         if sender_account.balance < total_cost {
             return Err(ExecutionError::InsufficientBalance);
         }
 
-        // Execute the transaction
         let result = self.execute_unsigned(&tx.unsigned_tx)?;
 
-        // Apply state changes
         sender_account.increment_nonce();
-        sender_account.subtract_balance(result.gas_used as u128 * tx.unsigned_tx.max_fee_per_gas)?;
+        sender_account
+            .subtract_balance(result.gas_used as u128 * tx.unsigned_tx.max_fee_per_gas)
+            .map_err(|_| ExecutionError::InsufficientBalance)?;
 
         let mut changes = result.state_changes;
-        changes.modified_accounts.insert(Address::new([0u8; 20]), sender_account);
+        changes.modified_accounts.insert(sender, sender_account);
 
         self.state.commit_changes(changes.clone())?;
 

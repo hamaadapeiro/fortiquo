@@ -1,0 +1,19 @@
+[package]
+name = "fortiquo-rpc"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+
+[dependencies]
+fortiquo-types = { path = "../types" }
+fortiquo-state = { path = "../state" }
+fortiquo-revm = { path = "../revm" }
+fortiquo-consensus = { path = "../consensus" }
+serde.workspace = true
+serde_json.workspace = true
+postcard.workspace = true
+hex.workspace = true
+thiserror.workspace = true
+jsonrpsee = { workspace = true, features = ["server", "macros"] }
+tokio = { workspace = true, features = ["rt-multi-thread", "macros"] }

@@ -1,12 +1,13 @@
 //! Integration tests for revm executor with ML-DSA-44 cryptography
 
 use fortiquo_crypto::{
-    ml_dsa::MlDsa44Keypair, schemes::DefaultVerifier, Signer, Verifier,
+    ml_dsa::MlDsa44Keypair, ml_dsa::MlDsa44Scheme, schemes::DefaultVerifier, PublicKeyScheme, Signer,
+    Verifier,
 };
 use fortiquo_revm::{Executor, EvmConfig, GasConfig};
 use fortiquo_types::{
-    Address, ExecutionStatus, PublicKeyBytes, Receipt, SignatureBytes, SignedTransaction,
-    TransactionKind, UnsignedTransaction,
+    Address, ExecutionStatus, SignatureBytes, SignedTransaction, TransactionKind,
+    UnsignedTransaction,
 };
 use std::sync::Arc;
 
@@ -22,7 +23,7 @@ fn sign_transaction(
 ) -> Result<SignedTransaction, Box<dyn std::error::Error>> {
     let message = unsigned_tx.serialize_for_signing()?;
     let signature = keypair.sign(&message)?;
-    let public_key = keypair.public_key()?;
+    let public_key = keypair.public_key().clone();
 
     Ok(SignedTransaction::new(
         unsigned_tx,
@@ -150,14 +151,10 @@ fn test_executor_signature_verification_ml_dsa44() {
     let mut tampered_sig = signed_tx.signature.clone();
     tampered_sig.0[0] ^= 0xFF;
 
-    assert!(
-        verifier
-            .verify(&message, &tampered_sig, &signed_tx.public_key)
-            .is_err()
-            || !scheme
-                .verify(&message, &tampered_sig, &signed_tx.public_key)
-                .unwrap_or(false)
-    );
+    let tampered_ok = verifier
+        .verify(&message, &tampered_sig, &signed_tx.public_key)
+        .unwrap_or(false);
+    assert!(!tampered_ok);
 }
 
 #[test]
@@ -290,7 +287,7 @@ fn test_executor_address_derivation_from_keypair_ml_dsa44() {
 #[test]
 fn test_executor_public_key_extraction_ml_dsa44() {
     let keypair = test_keypair(b"pubkey extraction");
-    let public_key = keypair.public_key().expect("Failed to get public key");
+    let public_key = keypair.public_key();
 
     assert_eq!(public_key.len(), 1184); // ML-DSA-44 public key size
     assert!(!public_key.is_empty());
@@ -435,7 +432,7 @@ fn test_executor_full_transaction_flow_ml_dsa44() {
     let receipt = executor.create_receipt(tx_hash, 1, 0, &result);
     assert_eq!(receipt.status, ExecutionStatus::Success);
     assert_eq!(receipt.gas_used, 21_000);
-    assert_eq!(receipt.tx_hash, fortiquo_types::TxHash::new(tx_hash));
+    assert_eq!(receipt.tx_hash, tx_hash);
 }
 
 #[test]

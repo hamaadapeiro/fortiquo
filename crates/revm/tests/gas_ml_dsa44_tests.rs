@@ -1,6 +1,7 @@
 //! Gas accounting and execution tests with ML-DSA-44
 
 use fortiquo_crypto::ml_dsa::MlDsa44Keypair;
+use fortiquo_crypto::Signer;
 use fortiquo_revm::{Executor, EvmConfig, GasConfig, ExecutionResult};
 use fortiquo_types::{
     Address, ExecutionStatus, SignedTransaction, TransactionKind, UnsignedTransaction,
@@ -33,7 +34,7 @@ fn sign_tx(
 
     let message = unsigned.serialize_for_signing().expect("Failed to serialize");
     let signature = keypair.sign(&message).expect("Failed to sign");
-    let public_key = keypair.public_key().expect("Failed to get public key");
+    let public_key = keypair.public_key().clone();
 
     SignedTransaction::new(
         unsigned,
@@ -124,7 +125,7 @@ fn test_executor_contract_creation_gas_ml_dsa44() {
 
     let message = unsigned.serialize_for_signing().unwrap();
     let signature = keypair.sign(&message).unwrap();
-    let public_key = keypair.public_key().unwrap();
+    let public_key = keypair.public_key().clone();
 
     let signed_tx = SignedTransaction::new(
         unsigned,
@@ -263,7 +264,7 @@ fn test_executor_with_data_gas_ml_dsa44() {
 
     let message = unsigned.serialize_for_signing().unwrap();
     let signature = keypair.sign(&message).unwrap();
-    let public_key = keypair.public_key().unwrap();
+    let public_key = keypair.public_key().clone();
 
     let signed_tx = SignedTransaction::new(
         unsigned,

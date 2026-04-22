@@ -5,16 +5,16 @@ members = [
     "crates/types",
     "crates/crypto",
     "crates/revm",
+    "crates/consensus",
+    "crates/state",
+    "crates/mempool",
+    "crates/executor",
+    "crates/p2p",
+    "crates/rpc",
 ]
 
 # Future crates to be added in subsequent phases
-# "crates/consensus",
-# "crates/state",
 # "crates/evm",
-# "crates/mempool",
-# "crates/executor",
-# "crates/p2p",
-# "crates/rpc",
 # "crates/wallet-sdk",
 # "crates/node",
 

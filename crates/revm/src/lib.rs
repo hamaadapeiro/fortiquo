@@ -13,7 +13,7 @@ pub mod gas;
 pub mod state;
 pub mod error;
 
-pub use executor::Executor;
+pub use executor::{ExecutionResult, Executor};
 pub use gas::GasConfig;
 pub use state::StateManager;
 pub use error::ExecutionError;

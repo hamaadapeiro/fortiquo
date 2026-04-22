@@ -1,6 +1,7 @@
 //! Advanced execution tests with ML-DSA-44: receipts, logs, and complex scenarios
 
 use fortiquo_crypto::ml_dsa::MlDsa44Keypair;
+use fortiquo_crypto::Signer;
 use fortiquo_revm::Executor;
 use fortiquo_types::{
     Address, ExecutionStatus, Hash, LogEntry, Receipt, SignedTransaction, TransactionKind,
@@ -32,7 +33,7 @@ fn create_signed_transfer(
 
     let message = unsigned.serialize_for_signing().expect("Failed to serialize");
     let signature = keypair.sign(&message).expect("Failed to sign");
-    let public_key = keypair.public_key().expect("Failed to get public key");
+    let public_key = keypair.public_key().clone();
 
     SignedTransaction::new(
         unsigned,
@@ -98,7 +99,7 @@ fn test_receipt_contract_creation_ml_dsa44() {
 
     let message = unsigned.serialize_for_signing().unwrap();
     let signature = keypair.sign(&message).unwrap();
-    let public_key = keypair.public_key().unwrap();
+    let public_key = keypair.public_key().clone();
 
     let signed_tx = SignedTransaction::new(
         unsigned,
@@ -278,7 +279,7 @@ fn test_transaction_sequence_with_receipts_ml_dsa44() {
 
         let message = tx.serialize_for_signing().unwrap();
         let signature = sender.sign(&message).unwrap();
-        let public_key = sender.public_key().unwrap();
+        let public_key = sender.public_key().clone();
 
         let signed_tx = SignedTransaction::new(
             tx,
@@ -307,7 +308,7 @@ fn test_ml_dsa44_signature_in_receipt_ml_dsa44() {
     let keypair = test_keypair(b"signature in receipt");
 
     let tx = create_signed_transfer(&keypair, 0, Address::new([0x0Au8; 20]), 50);
-    let public_key = keypair.public_key().unwrap();
+    let public_key = keypair.public_key().clone();
 
     // Verify the public key size
     assert_eq!(public_key.len(), 1184);
@@ -317,7 +318,7 @@ fn test_ml_dsa44_signature_in_receipt_ml_dsa44() {
     let receipt = executor.create_receipt(tx_hash, 1, 0, &result);
 
     // Receipt should have proper structure
-    assert_eq!(receipt.tx_hash, fortiquo_types::TxHash::new(tx_hash));
+    assert_eq!(receipt.tx_hash, tx_hash);
     assert_eq!(receipt.status, ExecutionStatus::Success);
 }
 

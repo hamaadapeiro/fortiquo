@@ -1,0 +1,14 @@
+[package]
+name = "fortiquo-executor"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+
+[dependencies]
+fortiquo-types = { path = "../types" }
+fortiquo-state = { path = "../state" }
+fortiquo-revm = { path = "../revm" }
+fortiquo-consensus = { path = "../consensus" }
+thiserror.workspace = true
+postcard.workspace = true

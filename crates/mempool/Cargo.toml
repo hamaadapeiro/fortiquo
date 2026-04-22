@@ -1,0 +1,16 @@
+[package]
+name = "fortiquo-mempool"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+
+[dependencies]
+fortiquo-types = { path = "../types" }
+fortiquo-state = { path = "../state" }
+fortiquo-revm = { path = "../revm" }
+thiserror.workspace = true
+postcard.workspace = true
+
+[dev-dependencies]
+fortiquo-crypto = { path = "../crypto" }

@@ -1,8 +1,8 @@
 //! Integration tests for cryptographic operations
 
 use fortiquo_crypto::{
-    address_deriver::Blake3AddressDeriver, hasher::DomainSeparatedHasher,
-    ml_dsa::MlDsa44Keypair, schemes::DefaultVerifier, AddressDeriver, Signer, Verifier,
+    hasher::DomainSeparatedHasher, ml_dsa::MlDsa44Keypair, schemes::DefaultVerifier, PublicKeyScheme,
+    Signer, Verifier,
 };
 use fortiquo_types::AlgorithmId;
 use std::sync::Arc;
@@ -20,7 +20,7 @@ fn test_full_sign_and_verify_flow() {
     // Verify the signature
     let scheme = fortiquo_crypto::ml_dsa::MlDsa44Scheme;
     let verifier = DefaultVerifier::new(Arc::new(scheme));
-    let public_key = keypair.public_key().unwrap();
+    let public_key = keypair.public_key().clone();
     let result = verifier.verify(message, &signature, &public_key);
     assert!(result.is_ok());
 }

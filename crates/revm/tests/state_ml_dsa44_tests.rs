@@ -1,6 +1,7 @@
 //! State management tests with ML-DSA-44 signed transactions
 
 use fortiquo_crypto::ml_dsa::MlDsa44Keypair;
+use fortiquo_crypto::Signer;
 use fortiquo_revm::{Executor, StateManager};
 use fortiquo_types::{Account, Address, SignatureBytes, SignedTransaction, TransactionKind, UnsignedTransaction, PublicKeyBytes};
 
@@ -29,7 +30,7 @@ fn create_signed_tx(
 
     let message = unsigned.serialize_for_signing().expect("Failed to serialize");
     let signature = keypair.sign(&message).expect("Failed to sign");
-    let public_key = keypair.public_key().expect("Failed to get public key");
+    let public_key = keypair.public_key().clone();
 
     SignedTransaction::new(
         unsigned,
@@ -197,7 +198,7 @@ fn test_state_manager_with_executor_ml_dsa44() {
 
     let message = tx.serialize_for_signing().expect("Failed to serialize");
     let signature = keypair.sign(&message).expect("Failed to sign");
-    let public_key = keypair.public_key().expect("Failed to get public key");
+    let public_key = keypair.public_key().clone();
 
     let signed_tx = SignedTransaction::new(
         tx,

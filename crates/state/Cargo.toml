@@ -1,0 +1,23 @@
+[package]
+name = "fortiquo-state"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+
+[features]
+default = []
+rocksdb = ["dep:rocksdb"]
+
+[dependencies]
+fortiquo-types = { path = "../types" }
+fortiquo-revm = { path = "../revm" }
+rocksdb = { workspace = true, optional = true }
+thiserror.workspace = true
+postcard.workspace = true
+blake3.workspace = true
+hex.workspace = true
+
+[dev-dependencies]
+tempfile = "3"
+proptest.workspace = true

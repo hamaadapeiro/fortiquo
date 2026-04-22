@@ -110,6 +110,22 @@ impl StateManager {
         self.storage.clear();
     }
 
+    /// All `(address, slot, raw value)` rows for state-root computation and snapshots.
+    pub fn storage_entries(&self) -> Vec<(Address, Hash, Vec<u8>)> {
+        let mut out = Vec::new();
+        for (addr, slots) in &self.storage {
+            for (slot, val) in slots {
+                out.push((*addr, *slot, val.clone()));
+            }
+        }
+        out.sort_by(|a, b| {
+            a.0.as_bytes()
+                .cmp(b.0.as_bytes())
+                .then_with(|| a.1.as_bytes().cmp(b.1.as_bytes()))
+        });
+        out
+    }
+
     /// Create a checkpoint of current state (for reverting).
     pub fn checkpoint(&self) -> StateSnapshot {
         StateSnapshot {
